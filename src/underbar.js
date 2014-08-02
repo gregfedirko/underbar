@@ -87,6 +87,13 @@ var _ = {};
 
   // Return all elements of an array that pass a truth test.
   _.filter = function(collection, test) {
+    var newArr = [];
+    _.each(collection, function(val){
+      if (test(val)){
+        newArr.push(val);
+      }
+    });
+    return newArr;
   };
 
   // Return all elements of an array that don't pass a truth test.
