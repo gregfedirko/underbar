@@ -218,10 +218,23 @@ var _ = {};
 
   // Determine whether all of the elements match a truth test.
   _.every = function(collection, iterator) {
-    // TIP: Try re-using reduce() here.
-    _.reduce(collection, function(accumulator, item){
+    console.log("collection: " + collection.toString());
+    console.log(collection);
+    //console.log(iterator.toString());
 
-    });
+
+    if (Object.keys(collection).length === 0){
+      return true;
+    } 
+
+    return _.reduce(collection, function(accumulator, item){
+
+      var current = ((iterator === undefined) ? Boolean(item) : Boolean(iterator(item)) );
+
+      return accumulator && current;
+    }, true);
+    // TIP: Try re-using reduce() here.
+
   };
 
   // Determine whether any of the elements pass a truth test. If no iterator is
