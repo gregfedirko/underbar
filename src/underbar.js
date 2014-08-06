@@ -218,10 +218,6 @@ var _ = {};
 
   // Determine whether all of the elements match a truth test.
   _.every = function(collection, iterator) {
-    console.log("collection: " + collection.toString());
-    console.log(collection);
-    //console.log(iterator.toString());
-
 
     if (Object.keys(collection).length === 0){
       return true;
@@ -230,7 +226,6 @@ var _ = {};
     return _.reduce(collection, function(accumulator, item){
 
       var current = ((iterator === undefined) ? Boolean(item) : Boolean(iterator(item)) );
-
       return accumulator && current;
     }, true);
     // TIP: Try re-using reduce() here.
@@ -241,6 +236,21 @@ var _ = {};
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
+
+    // HR,
+    // Not sure if this is what you meant, but I just copied the every() method
+    // and edited the defaults to false and changed the && to an ||
+
+
+    if (Object.keys(collection).length === 0){
+      return false;
+    } 
+
+    return _.reduce(collection, function(accumulator, item){
+
+      var current = ((iterator === undefined) ? Boolean(item) : Boolean(iterator(item)) );
+      return accumulator || current;
+    }, false);
   };
 
 
