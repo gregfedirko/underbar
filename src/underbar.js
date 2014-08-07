@@ -380,7 +380,31 @@ var _ = {};
   // TIP: This function's test suite will ask that you not modify the original
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
+
+  
+
   _.shuffle = function(array) {
+    
+    //Fisher Yates Shuffle
+
+    var nArray = array.slice();
+    console.log(array);
+    console.log(nArray);
+  
+    var currIndex = nArray.length, 
+        temp, 
+        randIndex;
+
+    while (currIndex !== 0){
+      randIndex = Math.floor(Math.random() * currIndex);
+      currIndex -= 1;
+
+      temp = nArray[currIndex];
+      nArray[currIndex] = nArray[randIndex];
+      nArray[randIndex] = temp;
+    }
+
+    return nArray;
   };
 
 
